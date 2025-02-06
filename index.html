@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>С Днем Святого Валентина, любимый!</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Dancing+Script&display=swap');
+
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: 'Roboto', sans-serif;
+        background-color: #000;
+        overflow: hidden;
+      }
+
+      .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 40px;
+        text-align: center;
+        max-width: 600px;
+        z-index: 10;
+        color: #fff;
+        backdrop-filter: blur(5px);
+      }
+
+      h1 {
+        font-family: 'Dancing Script', cursive;
+        color: #ff4081;
+        font-size: 3em;
+        margin-bottom: 30px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      p {
+        line-height: 1.8;
+        margin-bottom: 20px;
+      }
+
+      .signature {
+        font-family: 'Dancing Script', cursive;
+        font-size: 1.5em;
+        color: #ff4081;
+        margin-top: 30px;
+      }
+
+      .heart {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: #ff4081;
+        transform: rotate(45deg);
+        animation: heartbeat 1s infinite;
+      }
+
+      .heart::before,
+      .heart::after {
+        content: '';
+        width: 10px;
+        height: 10px;
+        background: #ff4081;
+        border-radius: 50%;
+        position: absolute;
+      }
+
+      .heart::before {
+        top: -5px;
+        left: 0;
+      }
+
+      .heart::after {
+        top: 0;
+        left: -5px;
+      }
+
+      @keyframes heartbeat {
+        0% {
+          transform: scale(1) rotate(45deg);
+        }
+        20% {
+          transform: scale(1.3) rotate(45deg);
+        }
+        40% {
+          transform: scale(1) rotate(45deg);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(45deg);
+        }
+        50% {
+          transform: translateY(-20px) rotate(45deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>С Днем Святого Валентина, любимый!</h1>
+      <p>Дорогой [Имя парня],</p>
+      <p>
+        В этот особенный день я хочу сказать тебе, как сильно я тебя люблю. Ты делаешь мою жизнь
+        ярче, и я благодарна за каждый момент, проведенный с тобой.
+      </p>
+      <p>Ты мой лучший друг, моя опора и моя любовь. Спасибо за то, что ты есть в моей жизни.</p>
+      <p class="signature">С любовью,<br />[Твое имя]</p>
+    </div>
+
+    <script>
+      function createHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = Math.random() * 100 + 'vh';
+        heart.style.animation = `heartbeat 1s infinite, float ${
+          3 + Math.random() * 4
+        }s ease-in-out infinite`;
+        heart.style.opacity = 0.1 + Math.random() * 0.5;
+        heart.style.transform = `scale(${0.5 + Math.random()}) rotate(45deg)`;
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 15000);
+      }
+
+      // Создаем начальное количество сердец
+      for (let i = 0; i < 100; i++) {
+        setTimeout(createHeart, i * 50);
+      }
+
+      // Продолжаем создавать новые сердца
+      setInterval(createHeart, 100);
+    </script>
+  </body>
+</html>
